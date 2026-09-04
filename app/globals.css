@@ -1875,7 +1875,7 @@ a { text-decoration: none; color: inherit; }
   .nav-logo { font-size: 16px; }
   .nav-logo-icon { width: 28px; height: 28px; font-size: 13px; border-radius: 8px; }
 
-  /* Hero — single column */
+  /* Hero — single column, CENTERED */
   .hero-section { min-height: auto; height: auto; padding-bottom: 24px; }
   .hero-inner {
     grid-template-columns: 1fr;
@@ -1893,53 +1893,63 @@ a { text-decoration: none; color: inherit; }
     order: -1;
     margin-bottom: -30px;
   }
-  .hero-content { order: 0; text-align: center; }
-  .hero-title { font-size: clamp(26px, 6vw, 38px); letter-spacing: -1.2px; max-width: 100%; }
-  .hero-desc { margin: 12px auto 20px; font-size: 14px; max-width: 100%; }
-  .hero-btns { justify-content: center; }
-  .hero-visual { order: 1; }
-  .hero-image-wrap { height: 360px; border-radius: 24px; }
+  .hero-content { order: 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .hero-title { font-size: clamp(26px, 6vw, 38px); letter-spacing: -1.2px; max-width: 100%; text-align: center; }
+  .hero-desc { margin: 12px auto 20px; font-size: 14px; max-width: 480px; text-align: center; }
+  .hero-btns { justify-content: center; align-items: center; width: 100%; }
+  .hero-visual { order: 1; display: flex; justify-content: center; }
+  .hero-image-wrap { height: 360px; border-radius: 24px; max-width: 500px; width: 100%; }
   .hero-float { display: none; }
   .hero-cursor-light { display: none; }
   .hero-tag { font-size: 11px; padding: 6px 14px; }
 
-  /* Trust bar */
+  /* Trust bar — center aligned */
   .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .trust-item { padding: 0; }
+  .trust-item { padding: 12px; text-align: center; }
   .trust-icon { width: 38px; height: 38px; font-size: 15px; border-radius: 10px; }
 
-  /* Sections — reduced padding */
+  /* All sections — center aligned */
   .section-services { padding: 60px 0; }
   .section-doctor { padding: 60px 0; }
   .section-hours { padding: 60px 0; }
   .section-before-after { padding: 60px 0; }
   .section-reviews { padding: 60px 0; }
   .section-contact { padding: 60px 0; }
+  .section-head { text-align: center; }
+  .section-desc { text-align: center; margin-left: auto; margin-right: auto; }
+  .section-text { text-align: center; }
 
-  /* Services — single column */
-  .services-grid { grid-template-columns: 1fr; gap: 14px; }
+  /* Services — single column, centered */
+  .services-grid { grid-template-columns: 1fr; gap: 14px; max-width: 480px; margin: 0 auto; }
   .service-card-img { height: 160px; }
   .service-card-body { padding: 22px; }
   .service-card h3 { font-size: 16px; }
 
-  /* Doctor */
+  /* Doctor — centered */
   .doctor-grid { grid-template-columns: 1fr; gap: 32px; }
-  .doctor-image-wrap { height: 360px; border-radius: 24px; }
+  .doctor-grid > div { display: flex; flex-direction: column; align-items: center; }
+  .doctor-image-wrap { height: 360px; border-radius: 24px; max-width: 480px; width: 100%; }
   .doctor-badge-float { display: none; }
+  .credentials-list { text-align: left; max-width: 480px; width: 100%; }
+  .btn-primary-solid { align-self: flex-start; }
 
-  /* Hours */
+  /* Hours — centered */
   .hours-grid { grid-template-columns: 1fr; gap: 28px; }
-  .emergency-card { padding: 28px; }
+  .emergency-card { padding: 28px; text-align: center; }
   .emergency-card h3 { font-size: 22px; }
 
-  /* Before/After */
-  .ba-grid { grid-template-columns: 1fr; max-width: 500px; margin: 40px auto 0; }
+  /* Before/After — centered */
+  .ba-grid { grid-template-columns: 1fr; max-width: 480px; margin: 40px auto 0; }
+  .ba-disclaimer { text-align: center; }
 
-  /* Reviews */
-  .reviews-grid { grid-template-columns: 1fr; max-width: 500px; margin: 40px auto 0; }
+  /* Reviews — centered */
+  .reviews-grid { grid-template-columns: 1fr; max-width: 480px; margin: 40px auto 0; }
 
-  /* Contact */
+  /* Contact — centered */
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .contact-grid > div { display: flex; flex-direction: column; align-items: center; }
+  .contact-info-list { align-items: center; }
+  .contact-map { width: 100%; max-width: 480px; }
 
   /* Footer */
   .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
@@ -1957,35 +1967,38 @@ a { text-decoration: none; color: inherit; }
   .nav-mobile-menu { padding: 16px 20px 22px; gap: 12px; }
   .nav-mobile-menu a { font-size: 14px; }
 
-  /* Hero */
+  /* Hero — all centered, compact */
   .hero-section { padding-top: 50px; }
   .hero-title { font-size: clamp(26px, 7vw, 36px); letter-spacing: -1px; }
   .hero-title br { display: none; }
   .hero-desc { font-size: 14px; line-height: 1.7; margin-top: 12px; margin-bottom: 20px; }
   .hero-btns {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     gap: 10px;
+    width: 100%;
   }
   .hero-btns .btn-primary-solid,
   .hero-btns .btn-outline,
   .hero-btns .btn-wa {
+    width: 100%;
+    max-width: 320px;
     text-align: center;
     justify-content: center;
     padding: 14px 20px;
     font-size: 13px;
     border-radius: 11px;
   }
-  .hero-image-wrap { height: 280px; border-radius: 20px; }
-  .hero-3d-container { height: 140px; margin-bottom: -20px; }
+  .hero-image-wrap { height: 260px; border-radius: 20px; }
+  .hero-3d-container { height: 130px; margin-bottom: -15px; }
 
-  /* Trust bar */
-  .trust-grid { grid-template-columns: 1fr; gap: 10px; }
-  .trust-item { padding: 10px 14px; background: white; border-radius: 12px; border: 1px solid var(--border); }
+  /* Trust bar — single column centered */
+  .trust-grid { grid-template-columns: 1fr; gap: 10px; max-width: 360px; margin: 0 auto; }
+  .trust-item { padding: 12px 16px; background: white; border-radius: 12px; border: 1px solid var(--border); text-align: center; justify-content: center; display: flex; align-items: center; gap: 10px; }
 
-  /* Services */
+  /* Sections — reduced padding, all centered */
   .section-services { padding: 48px 0; }
-  .section-head { margin-bottom: 32px; }
+  .section-head { margin-bottom: 28px; text-align: center; }
   .service-card-img { height: 140px; }
   .service-card-body { padding: 18px; }
   .service-card h3 { font-size: 15px; margin-bottom: 6px; }
@@ -1994,39 +2007,52 @@ a { text-decoration: none; color: inherit; }
   /* Marquee */
   .marquee-item { width: 140px; height: 100px; }
 
-  /* Doctor */
+  /* Doctor — centered */
   .section-doctor { padding: 48px 0; }
   .doctor-image-wrap { height: 280px; border-radius: 20px; }
-  .section-title-lg { font-size: clamp(24px, 5vw, 32px); letter-spacing: -1px; }
-  .credentials-item { font-size: 13px; }
+  .section-title-lg { font-size: clamp(24px, 5vw, 32px); letter-spacing: -1px; text-align: center; }
+  .credentials-list { padding: 0 4px; }
+  .credential-item { font-size: 13px; }
+  .btn-primary-solid { align-self: center; }
 
   /* Hours */
   .section-hours { padding: 48px 0; }
   .hours-item { padding: 14px 16px; }
   .hours-day, .hours-time { font-size: 13px; }
-  .emergency-card { padding: 24px; border-radius: 18px; }
+  .emergency-card { padding: 24px; border-radius: 18px; text-align: center; }
   .emergency-card h3 { font-size: 20px; }
   .emergency-card p { font-size: 13px; }
 
   /* Before/After */
   .section-before-after { padding: 48px 0; }
-  .ba-card-label { padding: 14px; font-size: 14px; }
+  .ba-card-label { padding: 14px; font-size: 14px; text-align: center; }
 
   /* Reviews */
   .section-reviews { padding: 48px 0; }
   .review-card { padding: 22px; }
   .review-text { font-size: 13px; line-height: 1.7; }
+  .review-author { justify-content: center; }
 
-  /* Contact */
+  /* Contact — centered */
   .section-contact { padding: 48px 0; }
-  .section-title-xl { font-size: clamp(24px, 5.5vw, 32px); letter-spacing: -1px; }
+  .section-title-xl { font-size: clamp(24px, 5.5vw, 32px); letter-spacing: -1px; text-align: center; }
+  .contact-desc { text-align: center; }
+  .contact-info-list { align-items: center; }
+  .contact-info-item { justify-content: center; }
   .form-card { padding: 24px; border-radius: 18px; }
-  .form-card h3 { font-size: 18px; }
+  .form-card h3 { font-size: 18px; text-align: center; }
   .modal-form-row { grid-template-columns: 1fr; }
   .form-row-2 { grid-template-columns: 1fr; }
-  .contact-form textarea { font-size: 13px; }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 16px; /* Prevents iOS zoom */
+    padding: 13px 14px;
+  }
+  .contact-form textarea { font-size: 14px; }
+  .btn-full { max-width: 360px; margin-left: auto; margin-right: auto; }
 
-  /* Footer */
+  /* Footer — centered */
   .site-footer { padding: 28px 0; }
   .footer-tagline { font-size: 12px; }
   .footer-links a { font-size: 12px; }
@@ -2043,17 +2069,21 @@ a { text-decoration: none; color: inherit; }
 /* ── SMALL MOBILE (≤400px) ── */
 @media (max-width: 400px) {
   .hero-title { font-size: 24px; letter-spacing: -0.8px; }
-  .hero-image-wrap { height: 240px; border-radius: 18px; }
+  .hero-image-wrap { height: 220px; border-radius: 18px; }
   .hero-btns .btn-primary-solid,
   .hero-btns .btn-outline,
   .hero-btns .btn-wa {
     padding: 13px 16px;
     font-size: 12px;
   }
-  .section-tag { font-size: 10px; letter-spacing: 1.5px; }
-  .section-title { font-size: 22px; letter-spacing: -0.8px; }
+  .section-tag { font-size: 10px; letter-spacing: 1.5px; text-align: center; }
+  .section-title { font-size: 22px; letter-spacing: -0.8px; text-align: center; }
+  .section-title-lg { font-size: 22px; letter-spacing: -0.8px; text-align: center; }
+  .section-title-xl { font-size: 22px; letter-spacing: -0.8px; text-align: center; }
   .service-card-body { padding: 16px; }
   .form-card { padding: 20px; }
+  .hero-3d-container { height: 110px; margin-bottom: -10px; }
+  .hero-tag { font-size: 10px; padding: 5px 12px; }
 }
 
 /* ================================
@@ -2080,6 +2110,19 @@ a { text-decoration: none; color: inherit; }
 
 .page-hero-content {
   max-width: 700px;
+}
+
+/* Center page hero on mobile */
+@media (max-width: 900px) {
+  .page-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .page-hero .container-lg {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .page-hero-tag {
@@ -2527,36 +2570,119 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ================================
-   PAGE RESPONSIVE
+   PAGE RESPONSIVE — All sub-pages centered on mobile
 ================================ */
 @media (max-width: 900px) {
+  /* Page hero — centered */
   .page-hero { min-height: 40vh; padding-top: 80px; padding-bottom: 40px; }
-  .page-hero-title { font-size: clamp(26px, 6vw, 38px); }
-  .services-page-grid { grid-template-columns: 1fr; }
+  .page-hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; max-width: 100%; }
+  .page-hero-title { font-size: clamp(26px, 6vw, 38px); text-align: center; }
+  .page-hero-desc { text-align: center; max-width: 480px; }
+  .page-hero-btns { justify-content: center; flex-wrap: wrap; }
+  .page-hero-tag { text-align: center; }
+
+  /* Services page */
+  .services-page-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .service-detail-row, .service-detail-row.reversed {
     grid-template-columns: 1fr;
     gap: 28px;
+    text-align: center;
   }
   .service-detail-row.reversed .service-detail-img { order: 0; }
   .service-detail-row.reversed .service-detail-content { order: 0; }
-  .service-detail-img { height: 260px; }
+  .service-detail-img { height: 260px; max-width: 480px; margin: 0 auto; width: 100%; }
+  .service-detail-content { display: flex; flex-direction: column; align-items: center; }
+  .service-features-grid { text-align: left; max-width: 400px; width: 100%; margin: 16px auto 0; }
+
+  /* Doctor page */
   .doctor-page-grid { grid-template-columns: 1fr; gap: 32px; }
+  .doctor-page-grid > div:first-child { display: flex; flex-direction: column; align-items: center; }
+  .doctor-page-grid > div:last-child { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .doctor-image-wrap { max-width: 420px; width: 100%; margin: 0 auto; }
+  .doctor-badge-float { display: none; }
+  .doctor-stats-row { max-width: 420px; width: 100%; }
   .hours-page-grid { grid-template-columns: 1fr; gap: 28px; }
-  .results-grid { grid-template-columns: 1fr; max-width: 500px; }
+
+  /* Results page */
+  .results-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .results-stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .rating-overview-card { flex-direction: column; gap: 24px; }
-  .reviews-page-grid { grid-template-columns: 1fr; max-width: 500px; }
+  .result-card-body { text-align: center; }
+  .result-stat-item { text-align: center; }
+
+  /* Reviews page */
+  .rating-overview-card { flex-direction: column; gap: 24px; text-align: center; }
+  .rating-big { width: 100%; }
+  .rating-bars { width: 100%; }
+  .rating-bar-row { justify-content: center; }
+  .reviews-page-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .review-card-full { text-align: center; }
+  .review-card-header { justify-content: center; }
+  .review-stars { text-align: center; }
+  .review-meta { text-align: center; }
+
+  /* Book page */
   .book-grid { grid-template-columns: 1fr; }
+  .book-form-card { max-width: 480px; margin: 0 auto; }
+  .book-info { max-width: 480px; margin: 0 auto; width: 100%; }
+
+  /* CTA section */
+  .cta-card { text-align: center; }
+  .cta-card p { text-align: center; }
+  .cta-btns { justify-content: center; }
 }
 
 @media (max-width: 600px) {
+  /* Page hero — compact centered */
   .page-hero { min-height: 35vh; padding-top: 70px; padding-bottom: 30px; }
-  .page-hero-title { font-size: 24px; letter-spacing: -0.8px; }
-  .page-hero-desc { font-size: 14px; }
-  .doctor-stats-row { flex-direction: column; gap: 10px; }
+  .page-hero-title { font-size: 24px; letter-spacing: -0.8px; text-align: center; }
+  .page-hero-desc { font-size: 14px; text-align: center; }
+  .page-hero-btns {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .page-hero-btns .btn-primary-solid,
+  .page-hero-btns .btn-outline,
+  .page-hero-btns .btn-wa {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Services page */
+  .service-detail-content { padding: 0; }
+  .service-detail-img { height: 220px; border-radius: 18px; }
   .service-features-grid { grid-template-columns: 1fr; }
+
+  /* Doctor page */
+  .doctor-image-wrap { height: 280px; border-radius: 20px; }
+  .doctor-stats-row { flex-direction: column; gap: 10px; }
+  .doctor-stat { max-width: 200px; width: 100%; margin: 0 auto; }
+  .credentials-list { text-align: left; width: 100%; }
+
+  /* Results page */
   .results-stats-grid { grid-template-columns: 1fr; }
-  .book-form-card { padding: 20px; }
+  .result-stat-item { max-width: 300px; width: 100%; margin: 0 auto; }
+  .result-card-body { padding: 16px; }
+
+  /* Reviews page */
+  .review-card-full { padding: 22px; text-align: center; }
+  .rating-overview-card { padding: 28px 20px; }
+
+  /* Book page */
+  .book-form-card { padding: 20px; border-radius: 18px; }
+  .book-info-card { padding: 20px; }
+  .book-form-card input,
+  .book-form-card select,
+  .book-form-card textarea {
+    font-size: 16px; /* Prevents iOS zoom */
+    padding: 13px 14px;
+  }
+
+  /* Contact form on home page */
+  .contact-grid > div { max-width: 100%; width: 100%; }
+  .contact-map iframe { border-radius: 14px; }
 }
 
 /* ================================
