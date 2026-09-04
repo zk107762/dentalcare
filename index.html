@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Ahmed Khan | Modern Dental Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+    --primary:#5a9ea0;
+    --primary-dark:#3d7a7c;
+    --primary-light:#eef6f6;
+    --muted:#8fa8aa;
+    --dark:#1a2e30;
+    --text:#5f7a7d;
+    --bg:#f6f9f8;
+    --white:#ffffff;
+    --border:#e2ece9;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:"DM Sans",sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;line-height:1.7;}
+h1,h2,h3{font-family:"Manrope",sans-serif;font-weight:700;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+.container{width:min(1080px,92%);margin:auto;}
+section{padding:90px 0;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:.3s;}
+.nav-inner{height:64px;display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:7px;font-family:"Manrope";font-weight:800;font-size:17px;color:var(--dark);}
+.logo i{width:30px;height:30px;border-radius:8px;background:var(--primary);color:white;display:grid;place-items:center;font-size:13px;font-style:normal;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:.2s;}
+.nav-links a:hover{color:var(--dark);}
+.nav-cta{padding:9px 20px;border-radius:8px;background:var(--dark);color:white;font-weight:600;font-size:12px;border:none;cursor:pointer;transition:.2s;}
+.nav-cta:hover{background:var(--primary-dark);}
+.menu-btn{display:none;background:none;border:none;font-size:20px;cursor:pointer;color:var(--dark);}
+
+/* TAG */
+.tag{color:var(--primary);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+
+/* MARQUEE - reusable */
+.marquee{padding:0;background:var(--bg);overflow:hidden;}
+.marquee-track{display:flex;gap:0;width:max-content;}
+.marquee-track.slide-left{animation:slideLeft 30s linear infinite;}
+.marquee-track.slide-right{animation:slideRight 30s linear infinite;}
+@keyframes slideLeft{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes slideRight{0%{transform:translateX(-50%);}100%{transform:translateX(0);}}
+.marquee-item{flex-shrink:0;position:relative;overflow:hidden;}
+.marquee-item img{width:100%;height:100%;object-fit:cover;}
+.marquee-item span{position:absolute;bottom:8px;left:8px;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);padding:4px 12px;border-radius:6px;font-size:11px;font-weight:600;color:var(--dark);}
+
+/* MARQUEE SIZE */
+.marquee-md .marquee-item{width:300px;height:200px;}
+
+/* HERO */
+.hero{padding-top:64px;min-height:100vh;display:flex;align-items:center;}
+.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px;align-items:center;padding:60px 0;}
+.hero h1{font-size:clamp(38px,4.5vw,60px);line-height:1.08;letter-spacing:-2px;margin-bottom:20px;}
+.hero h1 em{font-style:normal;color:var(--primary);}
+.hero>p{color:var(--text);font-size:16px;max-width:400px;margin-bottom:32px;}
+.hero-btns{display:flex;gap:10px;}
+.btn{padding:12px 24px;border-radius:10px;font-weight:600;font-size:13px;transition:.2s;cursor:pointer;border:none;font-family:"DM Sans";}
+.btn-primary{background:var(--primary);color:white;}
+.btn-primary:hover{background:var(--primary-dark);}
+.btn-line{background:transparent;border:1.5px solid var(--border);color:var(--dark);}
+.btn-line:hover{border-color:var(--primary);color:var(--primary);}
+.hero-visual{position:relative;}
+.hero-main{border-radius:24px;overflow:hidden;aspect-ratio:5/6;}
+.hero-main img{width:100%;height:100%;object-fit:cover;}
+.hero-float{position:absolute;background:white;border-radius:14px;padding:12px 16px;box-shadow:0 6px 24px rgba(0,0,0,.06);display:flex;align-items:center;gap:8px;}
+.hero-float.f1{bottom:16px;left:-24px;}
+.hero-float.f2{top:24px;right:-16px;}
+.hero-float b{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;font-size:14px;flex-shrink:0;font-weight:normal;}
+.hero-float b.g{background:var(--primary-light);color:var(--primary);}
+.hero-float b.y{background:#faf5e4;color:#b89a2a;}
+.hero-float strong{display:block;font-size:14px;font-family:"Manrope";}
+.hero-float small{color:var(--muted);font-size:11px;}
+
+/* SECTIONS */
+.section-head{margin-bottom:40px;}
+.section-head h2{font-size:clamp(28px,3.2vw,40px);letter-spacing:-1.2px;margin-bottom:8px;}
+
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.svc{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:.2s;}
+.svc:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.05);}
+.svc-img{height:140px;overflow:hidden;}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.svc:hover .svc-img img{transform:scale(1.04);}
+.svc-body{padding:20px;}
+.svc h3{font-size:15px;margin-bottom:4px;}
+.svc p{color:var(--muted);font-size:12px;line-height:1.7;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-photos{position:relative;}
+.about-img{border-radius:20px;overflow:hidden;aspect-ratio:3/4;}
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-small{position:absolute;bottom:-16px;right:-16px;width:150px;border-radius:14px;overflow:hidden;border:3px solid white;box-shadow:0 6px 20px rgba(0,0,0,.08);}
+.about-small img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.about p{color:var(--text);font-size:14px;margin-bottom:24px;}
+.creds{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;}
+.cred{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--dark);}
+.cred b{width:18px;height:18px;border-radius:5px;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;font-weight:700;}
+
+/* HOURS */
+.hr-section{background:var(--bg);}
+.hr-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.hr-list{display:flex;flex-direction:column;gap:6px;margin-top:28px;}
+.hr-item{display:flex;justify-content:space-between;padding:14px 18px;background:white;border:1px solid var(--border);border-radius:10px;}
+.hr-item strong{font-size:13px;}
+.hr-item span{font-weight:600;color:var(--primary);font-size:13px;}
+.emerg{background:var(--dark);color:white;border-radius:20px;padding:32px;}
+.emerg h3{font-size:24px;margin-bottom:8px;}
+.emerg p{color:#8fa8ab;font-size:13px;line-height:1.7;margin-bottom:20px;}
+.emerg-btn{display:block;width:100%;padding:12px;border-radius:10px;background:white;color:var(--dark);font-weight:600;font-size:13px;border:none;cursor:pointer;transition:.2s;}
+.emerg-btn:hover{background:var(--primary-light);}
+
+/* QUOTE */
+.quote-section{background:var(--bg);padding:0;overflow:hidden;}
+.quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.quote-img{aspect-ratio:1;overflow:hidden;}
+.quote-img img{width:100%;height:100%;object-fit:cover;}
+.quote-text{display:flex;flex-direction:column;justify-content:center;padding:60px;}
+.quote-text blockquote{font-family:"Manrope";font-size:clamp(22px,2.5vw,30px);letter-spacing:-0.5px;line-height:1.4;margin-bottom:20px;color:var(--dark);}
+.quote-text blockquote em{color:var(--primary);font-style:normal;}
+.quote-text cite{color:var(--muted);font-size:13px;font-style:normal;}
+
+/* BEFORE / AFTER */
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.ba{background:white;border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.ba-pair{display:grid;grid-template-columns:1fr 1fr;}
+.ba-half{padding:16px 10px;display:flex;flex-direction:column;align-items:center;}
+.ba-half:first-child{background:#f9f2f2;}
+.ba-half:last-child{background:#f0f8f5;}
+.ba-half img{width:100%;max-width:110px;height:70px;border-radius:8px;object-fit:cover;margin-bottom:6px;}
+.ba-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;}
+.ba-half:first-child .ba-label{color:#c44;}
+.ba-half:last-child .ba-label{color:var(--primary);}
+.ba h4{text-align:center;padding:14px;font-size:13px;font-weight:700;}
+
+/* TESTIMONIALS */
+.testi{background:var(--bg);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.testi-card{background:white;border:1px solid var(--border);border-radius:16px;padding:24px;}
+.testi-card .stars{color:#d4a940;letter-spacing:2px;font-size:13px;margin-bottom:14px;}
+.testi-card p{color:var(--text);font-size:12px;line-height:1.75;margin-bottom:16px;font-style:italic;}
+.patient{display:flex;align-items:center;gap:8px;}
+.patient img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+.patient strong{display:block;font-size:12px;}
+.patient small{color:var(--muted);font-size:10px;}
+
+/* CONTACT */
+.contact{background:var(--dark);color:white;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:50px;margin-top:40px;}
+.contact-info p{color:#8fa8ab;font-size:14px;margin-bottom:24px;}
+.ci{display:flex;gap:10px;align-items:center;margin:12px 0;}
+.ci b{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.06);display:grid;place-items:center;font-size:13px;flex-shrink:0;font-weight:normal;}
+.ci span,.ci a{font-size:13px;color:rgba(255,255,255,.7);}
+.ci a:hover{color:white;}
+.map-wrap{border-radius:14px;overflow:hidden;margin-top:16px;height:160px;background:rgba(255,255,255,.05);}
+.map-wrap iframe{width:100%;height:100%;border:0;}
+.form-card{background:white;border-radius:20px;padding:28px;}
+.form-card h3{color:var(--dark);font-size:18px;margin-bottom:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.form-card input,.form-card select,.form-card textarea{width:100%;padding:11px 12px;border:1.5px solid var(--border);border-radius:8px;font:inherit;font-size:12px;color:var(--dark);outline:none;background:var(--bg);transition:.2s;}
+.form-card input:focus,.form-card select:focus,.form-card textarea:focus{border-color:var(--primary);}
+.form-card textarea{min-height:70px;resize:vertical;margin-top:8px;}
+.form-card button{width:100%;margin-top:10px;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:24px 0;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;}
+footer p{color:var(--muted);font-size:11px;}
+.footer-links{display:flex;gap:16px;}
+.footer-links a{color:var(--muted);font-size:11px;transition:.2s;}
+.footer-links a:hover{color:var(--primary);}
+
+/* WHATSAPP */
+.wa{position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;background:#25d366;color:white;display:grid;place-items:center;font-size:22px;z-index:99;box-shadow:0 4px 16px rgba(37,211,102,.25);transition:.2s;}
+.wa:hover{transform:scale(1.08);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:.06s;}.rd2{transition-delay:.12s;}
+
+/* MOBILE */
+@media(max-width:900px){
+    .nav-links{display:none;}
+    .menu-btn{display:block;}
+    .hero-grid,.about-grid,.hr-grid,.contact-grid,.quote-grid{grid-template-columns:1fr;}
+    .hero{min-height:auto;padding:90px 0 50px;}
+    .hero-grid{gap:32px;padding:30px 0;}
+    .hero-main{aspect-ratio:16/10;}
+    .hero-float{display:none;}
+    .svc-grid,.testi-grid,.ba-grid{grid-template-columns:1fr;}
+    .about-small{display:none;}
+    .footer-inner{flex-direction:column;gap:10px;text-align:center;}
+    .marquee-md .marquee-item{width:160px;height:110px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="#" class="logo"><i>&#10022;</i>SmileCare</a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#doctor">Doctor</a>
+            <a href="#results">Results</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+            <button class="nav-cta" onclick="smooth('#contact')">Book Now</button>
+        </div>
+        <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')">&#9776;</button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-grid">
+    <div>
+        <div class="tag">Accepting New Patients</div>
+        <h1>Your smile<br>deserves <em>better.</em></h1>
+        <p>Modern dental care built around your comfort. Personalized treatment and a team that genuinely cares.</p>
+        <div class="hero-btns">
+            <button class="btn btn-primary" onclick="smooth('#contact')">Book Appointment &rarr;</button>
+            <button class="btn btn-line" onclick="window.open('tel:+923475291102')">&#9742; Call</button>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-main"><img src="/images/hero-dentist.jpg" alt="Dr. Ahmed Khan"></div>
+        <div class="hero-float f1"><b class="g">&#10003;</b><div><strong>12+ Years</strong><small>Experience</small></div></div>
+        <div class="hero-float f2"><b class="y">&#9733;</b><div><strong>4.9 / 5.0</strong><small>Rating</small></div></div>
+    </div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+    <div class="section-head">
+        <div class="tag">Services</div>
+        <h2>What we do</h2>
+        <p style="color:var(--text);font-size:15px;max-width:400px;">Complete dental care under one roof.</p>
+    </div>
+    <div class="svc-grid">
+        <div class="svc reveal">
+            <div class="svc-img"><img src="/images/service-general.jpg" alt="General"></div>
+            <div class="svc-body"><h3>General Dentistry</h3><p>Exams, cleanings and preventative care.</p></div>
+        </div>
+        <div class="svc reveal rd1">
+            <div class="svc-img"><img src="/images/service-whitening.jpg" alt="Whitening"></div>
+            <div class="svc-body"><h3>Teeth Whitening</h3><p>Brighter smile in one visit.</p></div>
+        </div>
+        <div class="svc reveal rd2">
+            <div class="svc-img"><img src="/images/service-cosmetic.jpg" alt="Cosmetic"></div>
+            <div class="svc-body"><h3>Cosmetic Dentistry</h3><p>Veneers and aesthetic procedures.</p></div>
+        </div>
+        <div class="svc reveal">
+            <div class="svc-img"><img src="/images/service-implants.jpg" alt="Implants"></div>
+            <div class="svc-body"><h3>Dental Implants</h3><p>Permanent missing tooth solutions.</p></div>
+        </div>
+        <div class="svc reveal rd1">
+            <div class="svc-img"><img src="/images/service-orthodontics.jpg" alt="Orthodontics"></div>
+            <div class="svc-body"><h3>Orthodontics</h3><p>Clear aligners and modern braces.</p></div>
+        </div>
+        <div class="svc reveal rd2">
+            <div class="svc-img"><img src="/images/service-emergency.jpg" alt="Emergency"></div>
+            <div class="svc-body"><h3>Emergency Care</h3><p>Fast help when you need it most.</p></div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- SLIDING MARQUEE -->
+<div class="marquee marquee-md">
+    <div class="marquee-track slide-left">
+        <div class="marquee-item"><img src="/images/tooth-1.jpg" alt="Dental"><span>Dental Exams</span></div>
+        <div class="marquee-item"><img src="/images/tooth-2.jpg" alt="Whitening"><span>Whitening</span></div>
+        <div class="marquee-item"><img src="/images/tooth-3.jpg" alt="Cosmetic"><span>Cosmetic</span></div>
+        <div class="marquee-item"><img src="/images/tooth-4.jpg" alt="Implants"><span>Implants</span></div>
+        <div class="marquee-item"><img src="/images/tooth-5.jpg" alt="Orthodontics"><span>Orthodontics</span></div>
+        <div class="marquee-item"><img src="/images/tooth-6.jpg" alt="Emergency"><span>Emergency</span></div>
+        <div class="marquee-item"><img src="/images/dental-tools.jpg" alt="Technology"><span>Technology</span></div>
+        <div class="marquee-item"><img src="/images/clinic-interior.jpg" alt="Clinic"><span>Our Clinic</span></div>
+        <div class="marquee-item"><img src="/images/tooth-1.jpg" alt="Dental"><span>Dental Exams</span></div>
+        <div class="marquee-item"><img src="/images/tooth-2.jpg" alt="Whitening"><span>Whitening</span></div>
+        <div class="marquee-item"><img src="/images/tooth-3.jpg" alt="Cosmetic"><span>Cosmetic</span></div>
+        <div class="marquee-item"><img src="/images/tooth-4.jpg" alt="Implants"><span>Implants</span></div>
+        <div class="marquee-item"><img src="/images/tooth-5.jpg" alt="Orthodontics"><span>Orthodontics</span></div>
+        <div class="marquee-item"><img src="/images/tooth-6.jpg" alt="Emergency"><span>Emergency</span></div>
+        <div class="marquee-item"><img src="/images/dental-tools.jpg" alt="Technology"><span>Technology</span></div>
+        <div class="marquee-item"><img src="/images/clinic-interior.jpg" alt="Clinic"><span>Our Clinic</span></div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="doctor" style="background:var(--bg);">
+<div class="container about-grid">
+    <div class="about-photos reveal">
+        <div class="about-img"><img src="/images/doctor-about.jpg" alt="Dr. Ahmed Khan"></div>
+        <div class="about-small"><img src="/images/tooth-4.jpg" alt="Our clinic"></div>
+    </div>
+    <div class="reveal">
+        <div class="tag">Meet Your Dentist</div>
+        <h2 style="font-size:clamp(26px,3vw,36px);letter-spacing:-1px;margin-bottom:12px;">Care you can trust.</h2>
+        <p>Dr. Ahmed Khan brings 12+ years of experience with the latest dental technology for safe, comfortable treatments.</p>
+        <div class="creds">
+            <div class="cred"><b>&#10003;</b>BDS, FCPS</div>
+            <div class="cred"><b>&#10003;</b>Certified Implantologist</div>
+            <div class="cred"><b>&#10003;</b>12+ years clinical experience</div>
+            <div class="cred"><b>&#10003;</b>5000+ treatments completed</div>
+        </div>
+        <div class="hero-btns">
+            <button class="btn btn-primary" onclick="smooth('#contact')">Book Appointment &rarr;</button>
+            <button class="btn btn-line" onclick="window.open('tel:+923475291102')">&#9742; Call</button>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-section">
+<div class="quote-grid">
+    <div class="quote-img"><img src="/images/tooth-5.jpg" alt="Dental care"></div>
+    <div class="quote-text">
+        <blockquote>&ldquo;A healthy smile is not just about teeth &mdash; it&rsquo;s about <em>confidence</em>, comfort and quality of life.&rdquo;</blockquote>
+        <cite>&mdash; Dr. Ahmed Khan, BDS FCPS</cite>
+    </div>
+</div>
+</div>
+
+<!-- HOURS + EMERGENCY -->
+<section class="hr-section" id="hours">
+<div class="container hr-grid">
+    <div class="reveal">
+        <div class="tag">Opening Hours</div>
+        <h2 style="font-size:clamp(26px,3vw,36px);letter-spacing:-1px;margin-bottom:4px;">When we're open</h2>
+        <div class="hr-list">
+            <div class="hr-item"><strong>Mon &ndash; Thu</strong><span>9 AM &ndash; 8 PM</span></div>
+            <div class="hr-item"><strong>Friday</strong><span>9 AM &ndash; 6 PM</span></div>
+            <div class="hr-item"><strong>Saturday</strong><span>9 AM &ndash; 5 PM</span></div>
+            <div class="hr-item"><strong>Sunday</strong><span>Emergency Only</span></div>
+        </div>
+    </div>
+    <div class="reveal rd1">
+        <div class="emerg">
+            <h3>Dental Emergency?</h3>
+            <p>Don't wait. Call us for immediate help, available 24/7 for urgent cases.</p>
+            <button class="emerg-btn" onclick="window.open('tel:+923475291102')">&#9742; Call Now</button>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section id="results">
+<div class="container">
+    <div class="section-head">
+        <div class="tag">Results</div>
+        <h2>Real transformations</h2>
+    </div>
+    <div class="ba-grid">
+        <div class="ba reveal">
+            <div class="ba-pair">
+                <div class="ba-half"><img src="/images/before-whitening.jpg" alt="Before"><div class="ba-label">Before</div></div>
+                <div class="ba-half"><img src="/images/after-whitening.jpg" alt="After"><div class="ba-label">After</div></div>
+            </div>
+            <h4>Teeth Whitening</h4>
+        </div>
+        <div class="ba reveal rd1">
+            <div class="ba-pair">
+                <div class="ba-half"><img src="/images/before-veneers.jpg" alt="Before"><div class="ba-label">Before</div></div>
+                <div class="ba-half"><img src="/images/after-veneers.jpg" alt="After"><div class="ba-label">After</div></div>
+            </div>
+            <h4>Dental Veneers</h4>
+        </div>
+        <div class="ba reveal rd2">
+            <div class="ba-pair">
+                <div class="ba-half"><img src="/images/before-smile.jpg" alt="Before"><div class="ba-label">Before</div></div>
+                <div class="ba-half"><img src="/images/after-smile.jpg" alt="After"><div class="ba-label">After</div></div>
+            </div>
+            <h4>Smile Makeover</h4>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="reviews">
+<div class="container">
+    <div class="section-head">
+        <div class="tag">Reviews</div>
+        <h2>What patients say</h2>
+    </div>
+    <div class="testi-grid">
+        <div class="testi-card reveal">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"The clinic is beautiful and the doctor explained everything clearly. I finally feel comfortable at the dentist."</p>
+            <div class="patient"><img src="/images/avatar-1.jpg" alt="Sarah"><div><strong>Sarah Ahmed</strong><small>Patient</small></div></div>
+        </div>
+        <div class="testi-card reveal rd1">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"Professional and friendly. My treatment was painless and the results exceeded expectations."</p>
+            <div class="patient"><img src="/images/avatar-2.jpg" alt="Hamza"><div><strong>Hamza Ali</strong><small>Patient</small></div></div>
+        </div>
+        <div class="testi-card reveal rd2">
+            <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p>"Best dental experience ever. Easy booking, helpful staff, and fantastic whitening results."</p>
+            <div class="patient"><img src="/images/avatar-3.jpg" alt="Maham"><div><strong>Maham Khan</strong><small>Patient</small></div></div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+<div class="container contact-grid">
+    <div class="reveal">
+        <div class="tag" style="color:var(--primary);">Get In Touch</div>
+        <h2 style="font-size:clamp(26px,3vw,36px);letter-spacing:-1px;margin-bottom:12px;">Your healthier smile<br>starts here.</h2>
+        <p>Reach out or fill the form to book your visit.</p>
+        <div class="ci"><b>&#9742;</b><a href="tel:+923475291102">+92 347 5291102</a></div>
+        <div class="ci"><b>&#9993;</b><span>hello@smilecare.com</span></div>
+        <div class="ci"><b>&#8962;</b><span>Main Boulevard, Lahore</span></div>
+        <div class="map-wrap"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27225.9!2d74.3!3d31.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc20abe73e5d167ab!2sLahore!5e0!3m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe></div>
+    </div>
+    <div class="form-card reveal rd1">
+        <h3>Book an Appointment</h3>
+        <div class="form-row">
+            <input type="text" id="fName" placeholder="Name" required>
+            <input type="tel" id="fPhone" placeholder="Phone" required>
+            <input type="email" id="fEmail" placeholder="Email">
+            <select id="fService"><option value="">Service</option><option>General</option><option>Whitening</option><option>Cosmetic</option><option>Implants</option><option>Orthodontics</option><option>Emergency</option></select>
+            <input type="date" id="fDate">
+            <input type="time" id="fTime">
+        </div>
+        <textarea id="fMessage" placeholder="Message..."></textarea>
+        <button class="btn btn-primary" onclick="bookWA()">Send via WhatsApp &rarr;</button>
+    </div>
+</div>
+</section>
+
+<footer>
+<div class="container footer-inner">
+    <a href="#" class="logo"><i>&#10022;</i>SmileCare</a>
+    <div class="footer-links"><a href="#services">Services</a><a href="#doctor">Doctor</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></div>
+    <p>&copy; 2026 SmileCare</p>
+</div>
+</footer>
+
+<a class="wa" href="https://wa.me/923475291102" target="_blank">&#128172;</a>
+
+<script>
+function smooth(s){document.querySelector(s).scrollIntoView({behavior:"smooth"});}
+window.addEventListener("scroll",function(){document.querySelector("nav").style.boxShadow=scrollY>50?"0 1px 12px rgba(0,0,0,.04)":"none";});
+var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting)en.target.classList.add("active");});},{threshold:.08,rootMargin:"0px 0px -20px 0px"});
+document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el);});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.querySelector(this.getAttribute("href"));if(t)t.scrollIntoView({behavior:"smooth"});});});
+function bookWA(){
+    var n=document.getElementById("fName").value.trim(),p=document.getElementById("fPhone").value.trim();
+    if(!n||!p){alert("Enter name and phone.");return;}
+    var e=document.getElementById("fEmail").value,s=document.getElementById("fService").value;
+    var d=document.getElementById("fDate").value,t=document.getElementById("fTime").value,m=document.getElementById("fMessage").value.trim();
+    var msg="Hello! I'd like to book.\n\n*Name:* "+n+"\n*Phone:* "+p+"\n*Email:* "+(e||"-")+"\n*Service:* "+(s||"-")+"\n*Date:* "+(d||"Flexible")+"\n*Time:* "+(t||"Flexible")+"\n*Note:* "+(m||"None");
+    window.open("https://wa.me/923475291102?text="+encodeURIComponent(msg),"_blank");
+}
+</script>
+</body>
+</html>
