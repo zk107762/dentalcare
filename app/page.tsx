@@ -124,6 +124,55 @@ export default function Home() {
   const ratingCardRef = useRef<HTMLDivElement>(null);
   const expCardRef = useRef<HTMLDivElement>(null);
   const cursorLightRef = useRef<HTMLDivElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Close mobile menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (mobileMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
+  // Close mobile menu on escape key
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [mobileMenuOpen]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [mobileMenuOpen]);
 
   // Scroll reveal + nav glass + hero progress
   useEffect(() => {
@@ -332,13 +381,15 @@ export default function Home() {
           <button
             className="nav-mobile-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? "✕" : "☰"}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="nav-mobile-menu">
+          <div className="nav-mobile-menu" ref={mobileMenuRef}>
             <a href="/services" onClick={() => setMobileMenuOpen(false)}>
               Services
             </a>
@@ -538,6 +589,7 @@ export default function Home() {
                 img={s.img}
                 index={i}
                 onClick={() => openModal(s.title)}
+                loading="lazy"
               />
             ))}
           </div>
@@ -566,7 +618,7 @@ export default function Home() {
             { img: "/images/clinic-interior.jpg", label: "Our Clinic" },
           ].map((item, i) => (
             <div key={i} className="marquee-item">
-              <img src={item.img} alt={item.label} />
+              <img src={item.img} alt={item.label} loading="lazy" />
               <span>{item.label}</span>
             </div>
           ))}
@@ -587,6 +639,7 @@ export default function Home() {
                 <img
                   src={doctor.image}
                   alt={doctor.name}
+                  loading="lazy"
                 />
                 <div className="doctor-image-light" />
               </div>
@@ -719,7 +772,7 @@ export default function Home() {
                 <div className="review-stars">★★★★★</div>
                 <p className="review-text">&ldquo;{t.text}&rdquo;</p>
                 <div className="review-author">
-                  <img src={t.avatar} alt={t.name} />
+                  <img src={t.avatar} alt={t.name} loading="lazy" />
                   <div>
                     <strong>{t.name}</strong>
                     <small>Verified Patient</small>
@@ -864,6 +917,8 @@ function ContactForm({ onSubmit }: { onSubmit: () => void }) {
           placeholder="Your Name"
           value={formData.name}
           onChange={handleChange}
+          autoComplete="name"
+          required
         />
         <input
           type="tel"
@@ -871,6 +926,9 @@ function ContactForm({ onSubmit }: { onSubmit: () => void }) {
           placeholder="Phone Number"
           value={formData.phone}
           onChange={handleChange}
+          inputMode="tel"
+          autoComplete="tel"
+          required
         />
         <input
           type="email"
@@ -878,6 +936,8 @@ function ContactForm({ onSubmit }: { onSubmit: () => void }) {
           placeholder="Email Address"
           value={formData.email}
           onChange={handleChange}
+          inputMode="email"
+          autoComplete="email"
         />
         <select
           name="service"
@@ -896,12 +956,14 @@ function ContactForm({ onSubmit }: { onSubmit: () => void }) {
           name="date"
           value={formData.date}
           onChange={handleChange}
+          autoComplete="off"
         />
         <input
           type="time"
           name="time"
           value={formData.time}
           onChange={handleChange}
+          autoComplete="off"
         />
       </div>
       <textarea

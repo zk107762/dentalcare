@@ -9,6 +9,7 @@ interface ServiceCardProps {
   img: string;
   index: number;
   onClick?: () => void;
+  loading?: "lazy" | "eager";
 }
 
 export default function ServiceCard({
@@ -18,6 +19,7 @@ export default function ServiceCard({
   img,
   index,
   onClick,
+  loading = "lazy",
 }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -69,7 +71,7 @@ export default function ServiceCard({
         />
       )}
       <div className="service-card-img">
-        <img src={img} alt={title} />
+        <img src={img} alt={title} loading={loading} />
       </div>
       <div className="service-card-body">
         <div className="service-card-icon-wrap">

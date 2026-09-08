@@ -127,6 +127,7 @@ export default function AppointmentModal({
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  autoComplete="name"
                 />
                 <input
                   type="tel"
@@ -135,6 +136,8 @@ export default function AppointmentModal({
                   value={formData.phone}
                   onChange={handleChange}
                   required
+                  inputMode="tel"
+                  autoComplete="tel"
                 />
               </div>
               <div className="modal-form-row">
@@ -144,6 +147,8 @@ export default function AppointmentModal({
                   placeholder="Email Address"
                   value={formData.email}
                   onChange={handleChange}
+                  inputMode="email"
+                  autoComplete="email"
                 />
                 <select
                   name="service"
@@ -164,12 +169,14 @@ export default function AppointmentModal({
                   name="date"
                   value={formData.date}
                   onChange={handleChange}
+                  autoComplete="off"
                 />
                 <input
                   type="time"
                   name="time"
                   value={formData.time}
                   onChange={handleChange}
+                  autoComplete="off"
                 />
               </div>
               <textarea

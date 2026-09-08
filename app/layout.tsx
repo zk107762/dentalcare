@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { DM_Sans, Manrope } from "next/font/google";
 import "./globals.css";
@@ -16,10 +16,23 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: "#0b7c83",
+};
+
 export const metadata: Metadata = {
   title: "Dr. Ahmed Khan | Modern Dental Care",
   description:
     "Modern, comfortable and personalized dental care. Book your appointment today for a healthier, brighter smile.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "SmileCare",
+  },
 };
 
 export default function RootLayout({
